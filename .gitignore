@@ -1,0 +1,10 @@
+*.*~
+*.gba
+*.sgm
+*.bak
+*.sa*
+*.bin
+*.elf
+linker.lsc
+*~
+main.bin
