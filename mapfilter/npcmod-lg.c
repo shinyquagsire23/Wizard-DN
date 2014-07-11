@@ -51,12 +51,6 @@ void filter(unsigned int palette, unsigned int dest, unsigned int mode)
 		thing2 = 0x60;
 	}
 
-	if(bwFilter[0] > 0 && bwFilter[0] < 4)
-	{
-		doBW(bwFilter[0], thing, thing2, offset, amount * 0x10);
-		return;
-	}
-
 	int time = timeByte[2];
 	if(timeByte[4] != 0)
 		time = timeByte[4];
@@ -71,6 +65,10 @@ void filter(unsigned int palette, unsigned int dest, unsigned int mode)
 	if(returnYN && timeByte[4] == 0 && timeByte[5] == 0 && customColor == 0)
 	{
 		doMasking(palette, type, offset, amount);
+		if(bwFilter[0] > 0 && bwFilter[0] < 4)
+		{
+			doBW(bwFilter[0], thing, thing2, offset, amount * 0x10);
+		}
 		return;
 	}
 
@@ -119,6 +117,11 @@ void filter(unsigned int palette, unsigned int dest, unsigned int mode)
 	}
 	
 	doMasking(palette, type, offset, amount);
+	if(bwFilter[0] > 0 && bwFilter[0] < 4)
+	{
+		doBW(bwFilter[0], thing, thing2, offset, amount * 0x10);
+		return;
+	}
 }
 
 void doMasking(int palette, int type, int offset, int amount)
