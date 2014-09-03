@@ -43,7 +43,7 @@ endif
 #Build for Leaf Green
 #Not sure if it will work, though.
 #
-bpre : 
+bpge : 
 	sed 's/^        rom     : ORIGIN = 0x08XXXXXX, LENGTH = 32M$$/        rom     : ORIGIN = 0x08$(offset), LENGTH = 32M/' linker_base.lsc > linker.lsc
 	arm-none-eabi-gcc ${OPTS} -mthumb -mthumb-interwork -Dengine=0 -g -c -w -std=gnu99 -O0 -o main.out npcmod-lg.c
 	arm-none-eabi-ld -o main.o -T linker.lsc main.out -L/opt/devkitpro/devkitARM/lib/gcc/arm-none-eabi/4.7.1 -lgcc
